@@ -17,34 +17,17 @@ void func(int connfd)
 {
 	char buff[MAX];
 	int n;
-	// infinite loop for chat
-	// for (;;) {
-		bzero(buff, MAX);
+	bzero(buff, MAX);
 
-		// read the message from client and copy it in buffer
-		// read(connfd, buff, sizeof(buff));
-		// print buffer which contains the client contents
-		// printf("From client: %s\t To client : ", buff);
-		// bzero(buff, MAX);
-		// n = 0;
-		// copy server message in the buffer
-		// while ((buff[n++] = getchar()) != '\n')
-		// 	;
-		time_t t = time(NULL);
-  		struct tm tm = *localtime(&t);
- 		sprintf(buff, "now: %d-%02d-%02d %02d:%02d:%02d\n",
-			   	tm.tm_year + 1900, tm.tm_mon + 1,
-			   	tm.tm_mday, tm.tm_hour, tm.tm_min, tm.tm_sec);
+	time_t t = time(NULL);
+	struct tm tm = *localtime(&t);
+	sprintf(buff, "now: %d-%02d-%02d %02d:%02d:%02d\n",
+			tm.tm_year + 1900, tm.tm_mon + 1,
+			tm.tm_mday, tm.tm_hour, tm.tm_min, tm.tm_sec);
 
-		// and send that buffer to client
-		write(connfd, buff, sizeof(buff));
+	// and send that buffer to client
+	write(connfd, buff, sizeof(buff));
 
-		// if msg contains "Exit" then server exit and chat ended.
-		//if (strncmp("exit", buff, 4) == 0) {
-		//	printf("Server Exit...\n");
-		//	break;
-		//}
-	//}
 }
 
 // Driver function
